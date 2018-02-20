@@ -1,0 +1,39 @@
+'''
+Given two lists, both having String elements, write a python program using python lists to create a new string as per the rule given below:
+The first element in list1 should be merged with last element in list2, second element in list1 should be merged with second last element in list2 and so on. If an element in list1/list2 is None, then the corresponding element in the other list should be kept as it is in the merged list. 
+
+Sample Input	Expected Output
+list1=['A', 'app','a', 'd', 'ke', 'th', 'doc', 'awa']
+list2=['y','tor','e','eps','ay',None,'le','n']	“An apple a day keeps the doctor away”
+
+'''
+#DSA-Assgn-1
+
+def merge_list(list1, list2):
+    merged_data = ""
+    counter=0
+    index=len(list2)-1
+    while index!=-1:
+        if list2[index]!=None and list1[counter]!=None:
+            list1[counter]=list1[counter]+list2[index]
+            counter+=1
+            index-=1
+        elif list1[counter]==None:
+            list1[counter]=list2[index]
+            counter+=1
+            index-=1
+        else:
+            
+            counter+=1
+            index-=1
+
+    
+    merged_data=" ".join(list1)
+    return merged_data
+            
+
+#Provide different values for the variables and test your program
+list1=['The', 's', 'ris', 'in', None, 'ea']
+list2=['st', 'the', None, 'es', 'un', None]
+merged_data=merge_list(list1,list2)
+print(merged_data)
