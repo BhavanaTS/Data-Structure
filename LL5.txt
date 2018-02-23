@@ -1,0 +1,47 @@
+'''
+Write a python program to remove all duplicate elements from a sorted linked list containing integer data.
+Use the LinkedList class and methods in it to implement the above program.
+
+Example: 
+Input LinkedList: 10 10 20 20 30 30 30 40 50
+Output LinkedList: 10 20 30 40 50
+
+'''
+
+
+#DSA-Assgn-7
+
+#refer other files for all add,del,display func of linked list
+
+from src.DataStructures import LinkedList
+
+def remove_duplicates(duplicate_list):
+    lst=[]
+    temp=duplicate_list.get_head()
+    while temp!=None:
+        x=temp.get_data()
+        lst.append(x)
+        temp=temp.get_next()
+    lst1=list(set(lst))
+    lst1.sort()
+    temp=duplicate_list.get_head()
+    counter=0
+    while temp!=None:
+        temp.set_data(lst1[counter])
+        counter+=1
+        temp=temp.get_next()
+        if counter==(len(lst1)-1):
+            temp.set_next(None)
+        
+    return duplicate_list
+
+#Add different values to the linked list and test your program
+duplicate_list=LinkedList()
+duplicate_list.add(30)
+duplicate_list.add(30)
+duplicate_list.add(40)
+duplicate_list.add(10)
+duplicate_list.add(40)
+duplicate_list.add(40)
+duplicate_list.add(30)
+print(remove_duplicates(duplicate_list).__str__())
